@@ -1,0 +1,24 @@
+[
+ {
+  "dt": "Item",
+  "name": "Item-item_category",
+  "doctype": "Custom Field",
+  "fieldname": "item_category",
+  "fieldtype": "Link",
+  "label": "Item Category",
+  "options": "Item Category",
+  "module": "frappe_item",
+  "insert_after": "item_group"
+ },
+ {
+  "dt": "Item",
+  "name": "Item-item_tags",
+  "doctype": "Custom Field",
+  "fieldname": "item_tags",
+  "fieldtype": "Table MultiSelect",
+  "label": "Item Tags",
+  "options": "Item Tag Link",
+  "module": "frappe_item",
+  "insert_after": "item_category"
+ }
+]

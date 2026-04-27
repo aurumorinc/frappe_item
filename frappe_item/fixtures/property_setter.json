@@ -1,0 +1,14 @@
+[
+ {
+  "name": "Item-attributes-depends_on",
+  "doc_type": "Item",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "attributes",
+  "property": "depends_on",
+  "property_type": "Data",
+  "value": "",
+  "module": "Frappe Item"
+ }
+]
