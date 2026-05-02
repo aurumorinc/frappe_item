@@ -17,7 +17,7 @@
   "fieldname": "item_tags",
   "fieldtype": "Table MultiSelect",
   "label": "Item Tags",
-  "options": "Item Tag Link",
+  "options": "Item Tag Tag",
   "module": "frappe_item",
   "insert_after": "item_category"
  }
