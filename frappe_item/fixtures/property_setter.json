@@ -22,5 +22,17 @@
   "property_type": "Text",
   "value": "=\n!=\n>\n<\n>=\n<=\nis",
   "module": "Frappe Item"
+ },
+ {
+  "name": "Item-hsnsac-fetch_from",
+  "doc_type": "Item",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "hsnsac",
+  "property": "fetch_from",
+  "property_type": "Data",
+  "value": "item_category.hsnsac",
+  "module": "Frappe Item"
  }
 ]
