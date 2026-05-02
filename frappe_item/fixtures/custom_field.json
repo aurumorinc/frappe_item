@@ -12,6 +12,16 @@
  },
  {
   "dt": "Item",
+  "name": "Item-tab_item_tags",
+  "doctype": "Custom Field",
+  "fieldname": "tab_item_tags",
+  "fieldtype": "Tab Break",
+  "label": "Tags",
+  "module": "frappe_item",
+  "insert_after": "uoms"
+ },
+ {
+  "dt": "Item",
   "name": "Item-item_tags",
   "doctype": "Custom Field",
   "fieldname": "item_tags",
@@ -19,6 +29,6 @@
   "label": "Item Tags",
   "options": "Item Tag Tag",
   "module": "frappe_item",
-  "insert_after": "item_category"
+  "insert_after": "tab_item_tags"
  }
 ]
