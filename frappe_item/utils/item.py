@@ -20,3 +20,4 @@ def copy_template_attribute_values(doc, method):
         # If the variant row has no value, but the template did, copy it over!
         if not getattr(row, "attribute_value", None) and row.attribute in template_attr_values:
             row.attribute_value = template_attr_values[row.attribute]
+

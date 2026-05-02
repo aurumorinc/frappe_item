@@ -1,5 +1,16 @@
 [
  {
+  "dt": "Item Variant Attribute",
+  "name": "Item Variant Attribute-include_in_item_code",
+  "doctype": "Custom Field",
+  "fieldname": "include_in_item_code",
+  "fieldtype": "Check",
+  "label": "Include in Item Code",
+  "default": "1",
+  "module": "frappe_item",
+  "insert_after": "attribute"
+ },
+ {
   "dt": "Item",
   "name": "Item-item_category",
   "doctype": "Custom Field",
