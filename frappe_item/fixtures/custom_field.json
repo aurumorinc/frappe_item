@@ -30,6 +30,6 @@
   "label": "Item Tags",
   "options": "Item Tag Tag",
   "module": "frappe_item",
-  "insert_after": "sec_tags"
+  "insert_after": "section_tags"
  }
 ]
