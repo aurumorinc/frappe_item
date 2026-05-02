@@ -10,5 +10,17 @@
   "property_type": "Data",
   "value": "",
   "module": "Frappe Item"
+ },
+ {
+  "name": "Document Naming Rule Condition-condition-options",
+  "doc_type": "Document Naming Rule Condition",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "condition",
+  "property": "options",
+  "property_type": "Text",
+  "value": "=\n!=\n>\n<\n>=\n<=\nis",
+  "module": "Frappe Item"
  }
 ]
