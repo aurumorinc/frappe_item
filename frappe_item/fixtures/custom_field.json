@@ -12,9 +12,9 @@
  },
  {
   "dt": "Item",
-  "name": "Item-tab_item_tags",
+  "name": "Item-tab_tags",
   "doctype": "Custom Field",
-  "fieldname": "tab_item_tags",
+  "fieldname": "tab_tags",
   "fieldtype": "Tab Break",
   "label": "Tags",
   "module": "frappe_item",
