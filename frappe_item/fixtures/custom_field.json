@@ -16,6 +16,7 @@
   "doctype": "Custom Field",
   "fieldname": "section_tags",
   "fieldtype": "Section Break",
+  "collapsible": 1,
   "label": "Item Tags",
   "module": "frappe_item",
   "insert_after": "image"
