@@ -12,13 +12,23 @@
  },
  {
   "dt": "Item",
+  "name": "Item-section_tags",
+  "doctype": "Custom Field",
+  "fieldname": "section_tags",
+  "fieldtype": "Section Break",
+  "label": "Item Tags",
+  "module": "frappe_item",
+  "insert_after": "image"
+ },
+ {
+  "dt": "Item",
   "name": "Item-item_tags",
   "doctype": "Custom Field",
   "fieldname": "item_tags",
   "fieldtype": "Table MultiSelect",
   "label": "Item Tags",
-  "options": "Item Tag Link",
+  "options": "Item Tag Tag",
   "module": "frappe_item",
-  "insert_after": "item_category"
+  "insert_after": "sec_tags"
  }
 ]
