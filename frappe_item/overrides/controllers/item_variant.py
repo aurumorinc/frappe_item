@@ -30,7 +30,8 @@ def copy_attributes_to_variant(item, variant):
 					variant.set(field.fieldname, [])
 					for d in item.get(field.fieldname):
 						row = d.as_dict()
-						row.pop("name", None)
+						for _field in ["name", "parent", "parenttype", "parentfield", "creation", "modified", "modified_by", "owner"]:
+							row.pop(_field, None)
 						variant.append(field.fieldname, row)
 				else:
 					variant.set(field.fieldname, item.get(field.fieldname))
