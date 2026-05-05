@@ -29,9 +29,8 @@ def copy_attributes_to_variant(item, variant):
 				if field.fieldtype in ("Table", "Table MultiSelect"):
 					variant.set(field.fieldname, [])
 					for d in item.get(field.fieldname):
-						row = copy.deepcopy(d)
-						if row.get("name"):
-							row.name = None
+						row = d.as_dict()
+						row.pop("name", None)
 						variant.append(field.fieldname, row)
 				else:
 					variant.set(field.fieldname, item.get(field.fieldname))
