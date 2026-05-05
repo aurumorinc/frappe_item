@@ -49,7 +49,7 @@ class TestItemVariant(FrappeTestCase):
         if not frappe.db.exists("GST HSN Code", "9999"):
             frappe.get_doc({
                 "doctype": "GST HSN Code",
-                "name": "9999",
+                "name": "61091000",
                 "description": "Test HSN"
             }).insert(ignore_permissions=True)
 
