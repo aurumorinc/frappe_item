@@ -1,5 +1,41 @@
 import frappe
 
+def validate_attribute_values(doc, method=None):
+    if not getattr(doc, "attributes", None):
+        return
+
+    # gather all attributes to check
+    attr_names = list(set([d.attribute for d in doc.attributes if d.attribute]))
+    if not attr_names:
+        return
+
+    # fetch numeric_values and valid values
+    attributes_info = frappe.get_all("Item Attribute", filters={"name": ("in", attr_names)}, fields=["name", "numeric_values"])
+    numeric_attr = {a.name for a in attributes_info if a.numeric_values}
+
+    # for non-numeric, we need to get valid values
+    non_numeric_attr = [a.name for a in attributes_info if not a.numeric_values]
+    valid_values_map = {}
+    if non_numeric_attr:
+        valid_values_data = frappe.get_all("Item Attribute Value", filters={"parent": ("in", non_numeric_attr)}, fields=["parent", "attribute_value"])
+        for d in valid_values_data:
+            valid_values_map.setdefault(d.parent, set()).add(d.attribute_value)
+
+    for d in doc.attributes:
+        if not d.attribute or not getattr(d, "attribute_value", None):
+            continue
+            
+        if d.attribute in numeric_attr:
+            continue
+            
+        valid_vals = valid_values_map.get(d.attribute, set())
+        
+        # split by ; and check
+        values = [v.strip() for v in d.attribute_value.split(";")]
+        for val in values:
+            if val and val not in valid_vals:
+                frappe.throw(f"Invalid attribute value '{val}' for attribute '{d.attribute}'")
+
 def copy_template_attribute_values(doc, method=None):
     """
     Singleton router for maintaining attribute consistency between Template and Variant items.
