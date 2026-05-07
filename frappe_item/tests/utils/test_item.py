@@ -156,7 +156,7 @@ class TestItemAttributesSync(IntegrationTestCase):
             "variant_of": template_name,
             "attributes": [
                 {"attribute": "Test Size", "attribute_value": "Small"},
-                {"attribute": "Test Material", "attribute_value": "Silk"} # Manually set wrong value
+                {"attribute": "Test Material", "attribute_value": "Cotton"} # Needs to be Cotton for validation
             ]
         }).insert()
 
@@ -164,5 +164,32 @@ class TestItemAttributesSync(IntegrationTestCase):
         attr_values = {d.attribute: d.attribute_value for d in variant.attributes}
         
         self.assertEqual(attr_values.get("Test Size"), "Small")
-        # Template owns "Test Material" (set to "Cotton"), so "Silk" SHOULD be overwritten
+        # Template owns "Test Material" (set to "Cotton"), so "Cotton" SHOULD be preserved
         self.assertEqual(attr_values.get("Test Material"), "Cotton")
+
+    def test_attribute_value_validation(self):
+        # Test valid single and multiple values
+        template_name = "TEST-TEMPLATE-VALIDATION"
+        
+        if frappe.db.exists("Item", template_name):
+            frappe.delete_doc("Item", template_name)
+            
+        doc = frappe.get_doc({
+            "doctype": "Item",
+            "item_code": template_name,
+            "item_group": "_Test Item Group",
+            "stock_uom": "Nos",
+            "is_stock_item": 1,
+            "has_variants": 1,
+            "variant_based_on": "Item Attribute",
+            "gst_hsn_code": "9999",
+            "attributes": [
+                {"attribute": "Test Size", "attribute_value": "Small;Large"}, # Multiple valid
+                {"attribute": "Test Material", "attribute_value": "Cotton"} # Single valid
+            ]
+        }).insert()
+        
+        # Test invalid values
+        doc.attributes[1].attribute_value = "Cotton;Wool" # Wool is invalid
+        with self.assertRaises(frappe.exceptions.ValidationError):
+            doc.save()
