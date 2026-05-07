@@ -1,7 +1,7 @@
 import frappe
-from frappe.tests.utils import FrappeTestCase
+from frappe.tests import IntegrationTestCase
 
-class TestItemAttributesSync(FrappeTestCase):
+class TestItemAttributesSync(IntegrationTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
