@@ -134,7 +134,10 @@ doctype_js = {"Item": "public/js/item.js"}
 
 doc_events = {
 	"Item": {
-		"before_save": "frappe_item.utils.item.copy_template_attribute_values",
+		"before_save": [
+			"frappe_item.utils.item.validate_attribute_values",
+			"frappe_item.utils.item.copy_template_attribute_values"
+		],
 		"on_update": "frappe_item.utils.item.copy_template_attribute_values"
 	}
 }
